@@ -8,8 +8,8 @@ development:
   encoding: utf8
   database: research_development
   pool: 5
-  username: root
-  password:
+  username: research_user
+  password: SQLpassword
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -20,8 +20,8 @@ test:
   encoding: utf8
   database: research_test
   pool: 5
-  username: root
-  password:
+  username: research_user
+  password: SQLpassword
   socket: /tmp/mysql.sock
 
 production:
@@ -30,6 +30,6 @@ development:
   encoding: utf8
   database: research
   pool: 5
-  username: root
-  password:
+  username: research_user
+  password: SQLpassword
   socket: /tmp/mysql.sock
