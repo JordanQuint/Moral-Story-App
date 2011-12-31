@@ -1,4 +1,44 @@
 MoralStory::Application.routes.draw do
+  get "comment/show"
+
+  get "comment/create"
+
+  get "comment/new"
+
+  get "comment/edit"
+
+  get "comment/destroy"
+
+  get "story/index"
+
+  get "story/show"
+
+  get "story/create"
+
+  get "story/new"
+
+  get "story/destroy"
+
+  get "story/upvote"
+
+  get "story/downvote"
+
+  get "user/index"
+
+  get "user/show"
+
+  get "user/create"
+
+  get "user/new"
+
+  get "user/destroy"
+
+  get "pages/index"
+
+  get "pages/about"
+
+  get "pages/contact"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +88,7 @@ MoralStory::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'pages#index'
 
   # See how all your routes lay out with "rake routes"
 
