@@ -25,7 +25,6 @@ test:
   socket: /tmp/mysql.sock
 
 production:
-development:
   adapter: mysql2
   encoding: utf8
   database: research

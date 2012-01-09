@@ -1,4 +1,3 @@
-This will contain the header.
 <span style="float: left;">
   Logo, homepage link
 </span>
@@ -6,5 +5,10 @@ This will contain the header.
   Search bar?
 </span>
 <span style="float: right;">
-  My Profile, login information, etc
+  <% if signed_in? %>
+    <%= link_to "My Profile", user_path(current_user) %>
+  <% else %>
+    <%= link_to "Sign in", "/signin" %> <br/>
+    Don't have an account? <%= link_to "Sign up here", "/signup" %> 
+  <% end %>
 </span>

@@ -1,0 +1,12 @@
+body#application_background {
+  width: 980px;
+  margin: auto;
+  padding: 5px;
+  background-color: gray;
+}
+
+div#application_content, div#application_header {
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}

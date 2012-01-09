@@ -1,17 +1,19 @@
 <!DOCTYPE html>
+<title>Moral Story <%= @title.nil? ? "" : "| " + @title %></title>
 <html>
-<head>
-  <title>MoralStory</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="application_header">
-    <%= render "layouts/header" %>
-  </div>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>MoralStory</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body id="application_background">
+    <div id="application_content">
+      <div id="application_header">
+        <%= render "layouts/header" %>
+        <hr/>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
 </html>

@@ -1,43 +1,32 @@
 MoralStory::Application.routes.draw do
+  devise_for :users
+
+  resources :pages
+  resources :users
+  
+  match "/signup" => "Users#new"
+  
+  get "users/index"
+  get "users/show"
+  get "users/create"
+  get "users/new"
+  get "users/destroy"
+  get "users/login"
+  get "users/logout"
+  
   get "comment/show"
-
   get "comment/create"
-
   get "comment/new"
-
   get "comment/edit"
-
   get "comment/destroy"
 
   get "story/index"
-
   get "story/show"
-
   get "story/create"
-
   get "story/new"
-
   get "story/destroy"
-
   get "story/upvote"
-
   get "story/downvote"
-
-  get "user/index"
-
-  get "user/show"
-
-  get "user/create"
-
-  get "user/new"
-
-  get "user/destroy"
-
-  get "pages/index"
-
-  get "pages/about"
-
-  get "pages/contact"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -91,8 +80,4 @@ MoralStory::Application.routes.draw do
   root :to => 'pages#index'
 
   # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end
