@@ -1,14 +1,19 @@
-<span style="float: left;">
-  Logo, homepage link
-</span>
-<span style="padding-left: 300px; text-align: center;">
-  Search bar?
-</span>
-<span style="float: right;">
-  <% if signed_in? %>
-    <%= link_to "My Profile", user_path(current_user) %>
-  <% else %>
-    <%= link_to "Sign in", "/signin" %> <br/>
-    Don't have an account? <%= link_to "Sign up here", "/signup" %> 
-  <% end %>
-</span>
+<table>
+  <tr>
+    <td id="header_logo">
+      <%= link_to image_tag("rails.png"), "/" %>
+    </td>
+    <td id="header_search_bar">
+      Search bar?
+    </td>
+    <td id="header_customer_profile_info">
+      <% if signed_in? %>
+        Signed in as <%= link_to current_user.email, user_path(current_user) %>, <br/>
+        Not you? <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %><br/>
+        Don't have an account? '<%= link_to "Sign up here", new_user_registration_path %>
+      <% end %>
+    </td>
+  </tr>
+</table>

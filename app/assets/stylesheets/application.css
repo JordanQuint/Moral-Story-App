@@ -7,6 +7,20 @@ body#application_background {
 
 div#application_content, div#application_header {
   background-color: white;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+td#header_logo {
+  width: auto;
+  height: auto;
+}
+
+td#header_search_bar {
+  padding-left: 300px;
+  text-align: center;
+}
+
+td#header_customer_profile_info {
+  padding-left: 256px;
+  text-align: right;
 }

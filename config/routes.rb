@@ -3,8 +3,7 @@ MoralStory::Application.routes.draw do
 
   resources :pages
   resources :users
-  
-  match "/signup" => "Users#new"
+  resources :story
   
   get "users/index"
   get "users/show"

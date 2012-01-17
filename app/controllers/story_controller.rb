@@ -1,5 +1,7 @@
 class StoryController < ApplicationController
+  
   def index
+    @stories = Story.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show
