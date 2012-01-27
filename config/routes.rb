@@ -20,12 +20,16 @@ MoralStory::Application.routes.draw do
   get "comment/destroy"
 
   get "story/index"
+  match "/stories", :to => "Story#index"
   get "story/show"
   get "story/create"
   get "story/new"
   get "story/destroy"
   get "story/upvote"
   get "story/downvote"
+  
+  # Sets the host for Devise
+  default_url_options :host => "localhost"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
