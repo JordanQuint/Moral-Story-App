@@ -8,9 +8,12 @@ class StoryController < ApplicationController
   end
 
   def create
+    @story = Story.create(params)
+    @story.save
   end
 
   def new
+    @story = Story.new
   end
 
   def destroy

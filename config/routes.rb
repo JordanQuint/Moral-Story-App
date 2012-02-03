@@ -29,7 +29,7 @@ MoralStory::Application.routes.draw do
   get "story/downvote"
   
   # Sets the host for Devise
-  default_url_options :host => "localhost"
+  default_url_options :host => "localhost:3000"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,70 @@
+<%= form_for @story do |f| %>
+<table>
+  <tr>
+    <td>
+      <%= f.label "Title:" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_field :title %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label "Moral:" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_field :moral %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label "Story:" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_area :story, :size => "60x20" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label "Age group:" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= select(:story, :age, Story::AGE_GROUPS, {}) %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label "Topic:" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_field :topic %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label "Characteristics: (IE for teaching 'Lecture Based' would be one characteristic)" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.text_field :characteristic %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.submit "Create" %>
+    </td>
+  </tr>
+</table>
+  
+<% end %>

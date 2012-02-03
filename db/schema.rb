@@ -11,12 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103032533) do
+ActiveRecord::Schema.define(:version => 20120203024727) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                   :null => false
     t.integer  "story_id",                  :null => false
     t.string   "content",    :limit => 600, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "connections", :force => true do |t|
+    t.integer  "created_by_user_id"
+    t.integer  "story_one_id"
+    t.integer  "story_two_id"
+    t.string   "description",        :limit => 120
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,15 +51,17 @@ ActiveRecord::Schema.define(:version => 20120103032533) do
   end
 
   create_table "stories", :force => true do |t|
-    t.integer  "user_id",                        :null => false
-    t.integer  "moral_id",                       :null => false
-    t.string   "title",          :limit => 80
-    t.string   "story",          :limit => 8191
+    t.integer  "user_id",                               :null => false
+    t.string   "title",                 :limit => 80
+    t.string   "story",                 :limit => 8191
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "age",            :limit => 8
-    t.string   "topic",          :limit => 50
-    t.string   "characteristic", :limit => 50
+    t.string   "age",                   :limit => 8
+    t.string   "topic",                 :limit => 50
+    t.string   "characteristic",        :limit => 50
+    t.string   "educational_technique"
+    t.integer  "parent_story"
+    t.string   "moral",                 :limit => 80
   end
 
   create_table "users", :force => true do |t|
@@ -67,6 +85,10 @@ ActiveRecord::Schema.define(:version => 20120103032533) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean  "is_admin",                              :default => false, :null => false
+    t.string   "organization",           :limit => 50
+    t.string   "about",                  :limit => 800
+    t.boolean  "show_name",                             :default => false
+    t.boolean  "show_email",                            :default => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
