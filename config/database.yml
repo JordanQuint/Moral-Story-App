@@ -27,8 +27,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: research
+  database: quintjaa_db
   pool: 5
-  username: research_user
-  password: SQLpassword
+  username: quintjaa
+  password: P834PT4b
   socket: /tmp/mysql.sock
