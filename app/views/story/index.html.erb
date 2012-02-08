@@ -1,4 +1,20 @@
 <h1>Story list: </h1>
 <div class="digg_pagination">
-  <%= will_paginate @stories %>
+<table id="story_list" class="border1">
+  <thead>
+    <th class="border1">
+      Title
+    </th>
+    <th class="border1">
+      Author
+    </th>
+  </thead>
+<% @stories.each { |story| %>
+  <tr>
+    <td class="border1"><%= link_to story.title, story_path(story) %></td>
+    <td class="border1"><%= link_to story.author.name, user_path(story.author) %></td>
+  </tr>
+<% } %>
+</table>
+  
 </div>
