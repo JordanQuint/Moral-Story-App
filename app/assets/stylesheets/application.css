@@ -8,6 +8,7 @@ body#application_background {
 div#application_content, div#application_header {
   background-color: white;
   padding: 5px 10px 5px 10px;
+  position: relative;
 }
 
 td#header_logo {
@@ -23,4 +24,27 @@ td#header_search_bar {
 td#header_customer_profile_info {
   padding-left: 256px;
   text-align: right;
+}
+
+table#story_list tbody tr td, table#story_list thead th, table#story_list {
+  border: solid black 1px;
+  border-spacing: 0px;
+}
+
+table#story_list tbody tr td, table#story_list thead th {
+   padding: 5px;
+}
+
+.border1 {
+  border: solid black 1px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+.float_left {
+/*  float: left;*/
+}
+
+div#story_show_related {
+/*  float: right;*/
 }
