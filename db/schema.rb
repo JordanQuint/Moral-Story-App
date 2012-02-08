@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203024727) do
+ActiveRecord::Schema.define(:version => 20120207190100) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120203024727) do
     t.string   "educational_technique"
     t.integer  "parent_story"
     t.string   "moral",                 :limit => 80
+    t.integer  "score"
   end
 
   create_table "users", :force => true do |t|
@@ -69,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20120203024727) do
     t.string   "username",               :limit => 20
     t.string   "encrypted_password"
     t.string   "email",                  :limit => 80
-    t.integer  "score",                                 :default => 0
+    t.integer  "total_score",                           :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "reset_password_token"
