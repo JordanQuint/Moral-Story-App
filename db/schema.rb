@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207190100) do
+ActiveRecord::Schema.define(:version => 20120210161847) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20120207190100) do
     t.string   "username",               :limit => 20
     t.string   "encrypted_password"
     t.string   "email",                  :limit => 80
-    t.integer  "total_score",                           :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "reset_password_token"

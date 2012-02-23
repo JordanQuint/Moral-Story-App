@@ -5,6 +5,8 @@ MoralStory::Application.routes.draw do
   resources :users
   resources :story
   
+  match "/search", :to => "Pages#search"
+  
   get "users/index"
   get "users/show"
   get "users/create"

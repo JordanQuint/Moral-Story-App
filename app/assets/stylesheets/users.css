@@ -1,4 +1,9 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+div#user_profile_organization,
+div#user_profile_about,
+div#user_profile_email,
+div#user_profile_score {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

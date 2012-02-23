@@ -2,16 +2,15 @@
 <title>Moral Story <%= @title.nil? ? "" : "| " + @title %></title>
 <html>
   <head>
-    <title>MoralStory</title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag :application %>
+    <%= javascript_include_tag :application %>
     <%= csrf_meta_tags %>
   </head>
   <body id="application_background">
     <div id="application_header">
       <%= render "layouts/header" %>
-      <hr/>
     </div>
+    <hr id="header_hr" />
     <div id="application_content">      
       <%= yield %>
     </div>

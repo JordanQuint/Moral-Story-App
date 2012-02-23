@@ -11,19 +11,27 @@ div#application_content, div#application_header {
   position: relative;
 }
 
-td#header_logo {
+div#header_logo {
+  float: left;
   width: auto;
   height: auto;
 }
 
-td#header_search_bar {
-  padding-left: 300px;
+div#header_search_bar {
+  padding-left: 20%;
+  padding-top: 10px;
+  float: left;
   text-align: center;
+  width: 365px;
 }
 
-td#header_customer_profile_info {
-  padding-left: 256px;
+div#header_profile_info {
   text-align: right;
+}
+
+hr#header_hr {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 table#story_list tbody tr td, table#story_list thead th, table#story_list {
@@ -41,10 +49,11 @@ table#story_list tbody tr td, table#story_list thead th {
   border-collapse: collapse;
 }
 
-.float_left {
-/*  float: left;*/
+#searchbar {
+  float: left;
+  width: 200px; 
 }
 
-div#story_show_related {
-/*  float: right;*/
+#searchbar_dropdown {
+  float: right;
 }
