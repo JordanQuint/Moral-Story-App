@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210161847) do
+ActiveRecord::Schema.define(:version => 20120302031931) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -56,9 +56,8 @@ ActiveRecord::Schema.define(:version => 20120210161847) do
     t.string   "story",                 :limit => 8191
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "age",                   :limit => 8
+    t.string   "age",                   :limit => 30
     t.string   "topic",                 :limit => 50
-    t.string   "characteristic",        :limit => 50
     t.string   "educational_technique"
     t.integer  "parent_story"
     t.string   "moral",                 :limit => 80
