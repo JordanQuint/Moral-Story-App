@@ -1,1 +1,36 @@
-Search results page...
+<table>
+  <% if params[:type] == "users" %>
+    <% @results.each { |result| %>
+      <tr>
+        <td class="border1 search_results center">
+          <%= image_tag result.gravatar_url %>
+        </td>
+          
+        <td class="border1 search_results center">
+          <%= link_to result.username, user_path(result) %>
+        </td>
+      </tr>
+    <% } %>
+  <% else %>
+    <thead>
+      <tr>
+        <th class="border1 search_results">Story</th>
+        <th class="border1 search_results">Author</th>
+        <th class="border1 search_results">Content</th>
+      </tr>
+    </thead>
+    <% @results.each { |result| %>
+      <tr>
+        <td class="border1 search_results center">
+          <%= link_to result.title, story_path(result) %>
+        </td>
+        <td class="border1 search_results center">
+          <%= result.author.username %>
+        </td>
+        <td class="border1 search_results">
+          <%= result.story[0..60]%> ...
+        </td>
+      </tr>
+    <% }%>
+  <% end %>
+</table>

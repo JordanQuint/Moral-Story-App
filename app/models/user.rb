@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  
+  #Includes gravtastic functionality
+  include Gravtastic
+  gravtastic #includes a method "gravatar_url" for avatars
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

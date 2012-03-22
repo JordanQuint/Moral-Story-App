@@ -1,24 +1,52 @@
-<div id="header_logo">
-  <%= link_to image_tag("rails.png"), "/" %>
-</div>
-<div id="header_search_bar">
-  <form method="get" action="/search">
-    <input id="searchbar" name="query" type="text"/>
-    <select class="searchbar_dropdown" name="type">
-      <option value="users">Users</option>
-      <option value="title" selected="true">by Title</option>
-      <option value="age">by Age</option>
-      <option value="topic">by Topic</option>
-      <option value="educational_technique">by Technique</option>
-    </select>
-  </form>
-</div>
-<div id="header_profile_info">
-  <% if signed_in? %>
-    Signed in as <%= link_to current_user.email, user_path(current_user) %>, <br/>
-    Not you? <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %><br/>
-    Don't have an account? '<%= link_to "Sign up here", new_user_registration_path %>
-  <% end %>
-</div>
+<header>
+  <div id="header_logo">
+    <%= link_to image_tag("rails.png"), "/" %>
+  </div>
+  <div id="header_search_bar">
+    <div>
+      <form method="get" action="/search">
+        <input id="searchbar" name="query" type="text"/>
+        <select class="searchbar_dropdown" name="type">
+          <option value="users">Users</option>
+          <option value="title" selected="true">by Title</option>
+          <option value="age">by Age</option>
+          <option value="topic">by Topic</option>
+          <option value="educational_technique">by Technique</option>
+        </select>
+      </form>
+    </div>
+    <div id="header_nav_bar">
+      <nav>
+      <ul class="small_text">
+        <li><%= link_to "Home", root_path %></li>
+        <li>|</li>
+          <%= link_to "Stories", stories_path %>
+        <li><%= signed_in? ? '|' : '' %></li>
+        <li><%= signed_in? ? (link_to "Submit your own story!", new_story_path) : '' %></li>
+      </ul>
+      </nav>
+    </div>
+  </div>
+  <div id="header_profile_info">
+    <% if signed_in? %>
+      <table>
+        <tr>
+          <td>
+            Signed in as <%= link_to current_user.email, user_path(current_user) %>, <br/>
+          </td>
+          <td rowspan="2">
+            <%= image_tag current_user.gravatar_url :height => 50%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Not you? <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          </td>
+        </tr>
+      </table>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %><br/>
+      Don't have an account? <%= link_to "Sign up here", new_user_registration_path %>
+    <% end %>
+  </div>
+</header>

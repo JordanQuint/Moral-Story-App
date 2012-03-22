@@ -1,3 +1,8 @@
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
 body#application_background {
   width: 980px;
   margin: auto;
@@ -11,32 +16,38 @@ div#application_content, div#application_header {
   position: relative;
 }
 
+div#application_content {
+  padding-top: 20px;
+}
+
+div#application_header {
+  height: 63px;
+  border-bottom: solid black 1px;
+}
+
 div#header_logo {
   float: left;
   width: auto;
   height: auto;
+  margin-top: -5px;
 }
 
 div#header_search_bar {
-  padding-left: 20%;
-  padding-top: 10px;
+  margin-left: 130px;
+  margin-top: 10px;
   float: left;
   text-align: center;
   width: 365px;
 }
 
 div#header_profile_info {
+  float: right;
   text-align: right;
-}
-
-hr#header_hr {
   margin-top: 5px;
-  margin-bottom: 10px;
 }
 
 table#story_list tbody tr td, table#story_list thead th, table#story_list {
   border: solid black 1px;
-  border-spacing: 0px;
 }
 
 table#story_list tbody tr td, table#story_list thead th {
@@ -50,10 +61,41 @@ table#story_list tbody tr td, table#story_list thead th {
 }
 
 #searchbar {
-  float: left;
   width: 200px; 
 }
 
-#searchbar_dropdown {
-  float: right;
+.search_results {
+  padding: 2px 3px 2px 3px;
+}
+
+.center {
+  text-align: center;
+}
+
+#header_nav_bar {
+  position: relative;
+  left: 120px;
+  margin-top: 6px;
+}
+
+header {
+  padding-top: 5px;
+}
+
+header nav {
+  padding-bottom: 5px;
+  float: left;
+}
+
+header nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+header nav ul li {
+  display: inline;
+  padding: 0;
+  margin: 5px;
 }
