@@ -12,8 +12,6 @@ MoralStory::Application.routes.draw do
   get "users/create"
   get "users/new"
   get "users/destroy"
-  get "users/login"
-  get "users/logout"
   
   get "comment/show"
   get "comment/create"

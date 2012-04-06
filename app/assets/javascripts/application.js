@@ -1,3 +1,2 @@
-/**
- * @author Jordan Quint
- */
+//= require jquery.min
+//= require jquery_ujs
