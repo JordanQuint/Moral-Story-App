@@ -10,9 +10,18 @@ class StoryController < ApplicationController
   end
 
   def create
-    @story = Story.new(params[:story])
+    @story = Story.create(params[:story], :score => 0)
+    # @story = Story.create(:user_id => current_user.id,
+                          # :title => params[:story][:title],
+                          # :story => params[:story][:story],
+                          # :age => params[:story][:age],
+                          # :topic => params[:story][:topic],
+                          # :educational_technique => params[:story][:educational_technique],
+                          # :parent_story => params[:story][:parent_id],
+                          # :moral => params[:story][:moral],
+                          # :score => 0)
     if @story.save
-      redirect_to(@story, :notice => 'Your story was successfully created.')
+      redirect_to(story_path(@story), :notice => 'Your story was successfully created.')
     else
       render :action => "new"
     end
