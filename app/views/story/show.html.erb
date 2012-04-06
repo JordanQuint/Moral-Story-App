@@ -20,11 +20,6 @@
         Topic: <%= @story.topic %>
       </div>
     <% end %>
-    <% if !@story.characteristic.nil? %>
-      <div id="story_show_characteristic">
-        Characteristic: <%= @story.characteristic %>
-      </div>
-    <% end %>
     <% if !@story.educational_technique.nil? %>
       <div id="story_show_technique">
         Educational technique: <%= @story.educational_technique %>
@@ -34,6 +29,7 @@
 </div>
 
 <div id="story_show_related">
+  <%= link_to "Submit a related story", new_story_path + "?from=" + @story.id.to_s %>
   <table id="stories_related_by_age" class="border1">
     <thead>
       <th class="border1">

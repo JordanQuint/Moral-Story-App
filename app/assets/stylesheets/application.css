@@ -99,3 +99,10 @@ header nav ul li {
   padding: 0;
   margin: 5px;
 }
+
+/**************
+ * Story show page
+ **************/
+#story_show_related {
+  float: right;
+}

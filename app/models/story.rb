@@ -2,6 +2,7 @@ class Story < ActiveRecord::Base
   attr_accessible :story, :title, :characteristic, :age, :moral, :educational_technique
   
   AGE_GROUPS = ["High School", "College", "Elementary", "Preschool", "Middle School", "General Public"]
+  TECHNIQUES = ["Lecture", "Discussion", "Hands On"]
   
   #validations
   #no values can be empty except characteristics

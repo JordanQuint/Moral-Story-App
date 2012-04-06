@@ -52,14 +52,15 @@
   </tr>
   <tr>
     <td>
-      <%= f.label "Characteristics: (IE for teaching 'Lecture Based' would be one characteristic)" %>
+      <%= f.label "Educational Technique: (IE for teaching 'Lecture Based' would be one characteristic)" %>
     </td>
   </tr>
   <tr>
     <td>
-      <%= f.text_field :characteristic %>
+      <%= select(:story, :age, Story::TECHNIQUES, {}) %>
     </td>
   </tr>
+  <%= f.text_field :parent_id, :value => params[:from], :hidden => true %>
   <tr>
     <td>
       <%= f.submit "Create" %>

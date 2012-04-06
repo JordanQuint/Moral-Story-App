@@ -35,7 +35,7 @@
             Signed in as <%= link_to current_user.email, user_path(current_user) %>, <br/>
           </td>
           <td rowspan="2">
-            <%= image_tag current_user.gravatar_url :height => 50%>
+            <%= image_tag current_user.gravatar_url, :height => 55 %>
           </td>
         </tr>
         <tr>
