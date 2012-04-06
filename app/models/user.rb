@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :show_email, :show_name, :name, :username, :organization, :about
+                  :show_email, :show_name, :name, :username, :organization,
+                  :about
                   
   def stories
     Story.find_all_by_user_id(self.id)

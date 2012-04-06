@@ -1,5 +1,6 @@
 class Story < ActiveRecord::Base
-  attr_accessible :story, :title, :characteristic, :age, :moral, :educational_technique
+  attr_accessible :story, :title, :characteristic, :age, :moral, :educational_technique,
+                  :score, :parent_story, :user_id, :topic
   
   AGE_GROUPS = ["High School", "College", "Elementary", "Preschool", "Middle School", "General Public"]
   TECHNIQUES = ["Lecture", "Discussion", "Hands On"]
