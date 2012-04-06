@@ -9,6 +9,7 @@ gem 'pg'
 gem 'mysql2'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'gravtastic'
+gem 'jquery-rails', '>= 1.0.12'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

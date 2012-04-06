@@ -1,77 +1,79 @@
-<div id="story_show_information" class="float_left">
-  <div id="story_show_title"><%= @story.title %></div>
-  <div id="story_show_author">
-    Author: 
-    <% if @story.author.show_name %>
-      <%= link_to @story.author.name, user_path(@story.author) %>
-    <% else %>
-      <%= link_to @story.author.username, user_path(@story.author) %>
-    <% end %>
+<div>
+  <div id="story_show_information" class="float_left" style="width: span2">
+    <div id="story_show_title"><%= @story.title %></div>
+    <div id="story_show_author">
+      Author: 
+      <% if @story.author.show_name %>
+        <%= link_to @story.author.name, user_path(@story.author) %>
+      <% else %>
+        <%= link_to @story.author.username, user_path(@story.author) %>
+      <% end %>
+    </div>
+    <div id="story_show_content"><%= @story.story %></div>
+    <div id="story_show_details">
+      <% if !@story.age.nil? %>
+        <div id="story_show_age">
+          Age: <%= @story.age %>
+        </div>
+      <% end %>
+      <% if !@story.topic.nil? %>
+        <div id="story_show_topic">
+          Topic: <%= @story.topic %>
+        </div>
+      <% end %>
+      <% if !@story.educational_technique.nil? %>
+        <div id="story_show_technique">
+          Educational technique: <%= @story.educational_technique %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div id="story_show_content"><%= @story.story %></div>
-  <div id="story_show_details">
-    <% if !@story.age.nil? %>
-      <div id="story_show_age">
-        Age: <%= @story.age %>
-      </div>
-    <% end %>
-    <% if !@story.topic.nil? %>
-      <div id="story_show_topic">
-        Topic: <%= @story.topic %>
-      </div>
-    <% end %>
-    <% if !@story.educational_technique.nil? %>
-      <div id="story_show_technique">
-        Educational technique: <%= @story.educational_technique %>
-      </div>
-    <% end %>
+  
+  <div id="story_show_related">
+    <%= link_to "Submit a related story", new_story_path + "?from=" + @story.id.to_s %>
+    <table id="stories_related_by_age" class="border1">
+      <thead>
+        <th class="border1">
+          Stories with a similar age group:
+        </th>
+      </thead>
+      <% @story.related_by_age.each { |related| %>
+        <tr>
+          <td class="border1">
+            <%= link_to related.title, story_path(related) %>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+    <br/>
+    <table id="stories_related_by_topic" class="border1">
+      <thead>
+        <th class="border1">
+          Stories with a similar topic:
+        </th>
+      </thead>
+      <% @story.related_by_topic.each { |related| %>
+        <tr>
+          <td class="border1">
+            <%= link_to related.title, story_path(related) %>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+    <br/>
+    <table id="stories_related_by_author" class="border1">
+      <thead>
+        <th class="border1">
+          Other stories by this author:
+        </th>
+      </thead>
+      <% @story.related_by_author.each { |related| %>
+        <tr>
+          <td class="border1">
+            <%= link_to related.title, story_path(related) %>
+          </td>
+        </tr>
+      <% } %>
+    </table>
   </div>
-</div>
-
-<div id="story_show_related">
-  <%= link_to "Submit a related story", new_story_path + "?from=" + @story.id.to_s %>
-  <table id="stories_related_by_age" class="border1">
-    <thead>
-      <th class="border1">
-        Stories with a similar age group:
-      </th>
-    </thead>
-    <% @story.related_by_age.each { |related| %>
-      <tr>
-        <td class="border1">
-          <%= link_to related.title, story_path(related) %>
-        </td>
-      </tr>
-    <% } %>
-  </table>
-  <br/>
-  <table id="stories_related_by_topic" class="border1">
-    <thead>
-      <th class="border1">
-        Stories with a similar topic:
-      </th>
-    </thead>
-    <% @story.related_by_topic.each { |related| %>
-      <tr>
-        <td class="border1">
-          <%= link_to related.title, story_path(related) %>
-        </td>
-      </tr>
-    <% } %>
-  </table>
-  <br/>
-  <table id="stories_related_by_author" class="border1">
-    <thead>
-      <th class="border1">
-        Other stories by this author:
-      </th>
-    </thead>
-    <% @story.related_by_author.each { |related| %>
-      <tr>
-        <td class="border1">
-          <%= link_to related.title, story_path(related) %>
-        </td>
-      </tr>
-    <% } %>
-  </table>
 </div>

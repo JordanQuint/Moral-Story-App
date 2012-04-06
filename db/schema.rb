@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302031931) do
+ActiveRecord::Schema.define(:version => 20120406151151) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(:version => 20120302031931) do
     t.datetime "updated_at"
   end
 
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id",                                     :null => false
+    t.string   "from",       :limit => 30,                    :null => false
+    t.integer  "target_id",                                   :null => false
+    t.boolean  "viewed",                   :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stories", :force => true do |t|
     t.integer  "user_id",                               :null => false
     t.string   "title",                 :limit => 80
@@ -62,6 +71,14 @@ ActiveRecord::Schema.define(:version => 20120302031931) do
     t.integer  "parent_story"
     t.string   "moral",                 :limit => 80
     t.integer  "score"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id",                     :null => false
+    t.string   "subscribed_to", :limit => 30, :null => false
+    t.integer  "target_id",                   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

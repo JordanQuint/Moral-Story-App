@@ -7,6 +7,7 @@ class StoryController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @comment = Comment.new
   end
 
   def create

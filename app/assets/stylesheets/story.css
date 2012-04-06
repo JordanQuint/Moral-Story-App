@@ -1,0 +1,8 @@
+/**************
+ * Story show page
+ **************/
+#story_show_related {
+  border-left: solid #666 2px;
+  padding-left: 10px;
+  float: right;
+}
