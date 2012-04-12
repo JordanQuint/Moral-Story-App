@@ -1,4 +1,5 @@
 class StoryController < ApplicationController
+  before_filter :authenticate_user!, :only => [:create, :new, :destroy, :upvote, :downvote]
   
   def index
     @stories = Story.all
@@ -31,6 +32,7 @@ class StoryController < ApplicationController
 
   def new
     @story = Story.new
+    @user = current_user
   end
 
   def destroy

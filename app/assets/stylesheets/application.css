@@ -10,19 +10,30 @@ body#application_background {
   background-color: gray;
 }
 
-div#application_content, div#application_header {
+div#application_page {
   background-color: white;
   padding: 5px 10px 5px 10px;
+  height: auto;
+  width: auto;
+}
+
+div#application_content, div#application_header {
+  background-color: white;
   position: relative;
 }
 
-div#application_content {
-  padding-top: 20px;
+div#application_header {
+  height: 70px;
 }
 
-div#application_header {
+.span1, .span2, .span3, .span4, .span5, .span6,
+.span7, .span8, .span9, .span10, .span11, .span12 {
+  margin-left: 0px;
+}
+
+div#application_header header{
   height: 63px;
-  border-bottom: solid black 1px;
+  border-bottom: solid #666 2px;
 }
 
 div#header_logo {
@@ -33,17 +44,33 @@ div#header_logo {
 }
 
 div#header_search_bar {
-  margin-left: 130px;
-  margin-top: 10px;
+  margin-left: 100px;
+  margin-top: 0px;
   float: left;
   text-align: center;
-  width: 365px;
+  width: 400px;
+}
+
+div#header_search_bar form {
+  margin-bottom: 5px;
+}
+
+div#header_search_bar form input{
+  margin-bottom: 0px;
+}
+
+div#header_search_bar form select.searchbar_dropdown {
+  width: auto;
 }
 
 div#header_profile_info {
   float: right;
   text-align: right;
-  margin-top: 5px;
+}
+
+div#header_profile_info .header_user_avatar {
+  height: 60px;
+  width: auto;
 }
 
 table#story_list tbody tr td, table#story_list thead th, table#story_list {
@@ -74,8 +101,7 @@ table#story_list tbody tr td, table#story_list thead th {
 
 #header_nav_bar {
   position: relative;
-  left: 120px;
-  margin-top: 6px;
+  padding-left: 60px;
 }
 
 header {
@@ -98,4 +124,23 @@ header nav ul li {
   display: inline;
   padding: 0;
   margin: 5px;
+}
+
+/**************
+ * Story pages
+ **************/
+div#story_show_related {
+  border-left: solid #666 2px;
+  padding-left: 10px;
+  float: right;
+}
+
+div#story_show_information {
+  float: left;
+}
+
+/*Story new*/
+.story_text_area {
+  width: 500px;
+  height: 250px;
 }

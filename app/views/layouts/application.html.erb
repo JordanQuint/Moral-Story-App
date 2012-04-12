@@ -2,10 +2,10 @@
 <title>Moral Story <%= @title.nil? ? "" : "| " + @title %></title>
 <html>
   <head>
-    <%= stylesheet_link_tag :application %>
     <%= stylesheet_link_tag "bootstrap_and_overrides" %>
     <%= stylesheet_link_tag "bootstrap" %>
     <%= stylesheet_link_tag "bootstrap-responsive" %>
+    <%= stylesheet_link_tag :application %>
     
     <%= javascript_include_tag "jquery.min" %>
     <%= javascript_include_tag "rails" %>
@@ -20,11 +20,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body id="application_background">
-    <div id="application_header">
-      <%= render "layouts/header" %>
-    </div>
-    <div id="application_content">      
-      <%= yield %>
+    <div id="application_page" class="container span12">
+      <div id="application_header">
+        <%= render "layouts/header" %>
+      </div>
+      <div id="application_content">      
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

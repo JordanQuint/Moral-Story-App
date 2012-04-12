@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td>
-      <%= f.text_area :story, :size => "60x20" %>
+      <%= f.text_area :story, :class => "story_text_area" %>
     </td>
   </tr>
   <tr>
@@ -60,11 +60,11 @@
       <%= select(:story, :educational_technique, Story::TECHNIQUES, {}) %>
     </td>
   </tr>
-  <%= f.text_field :parent_story, :value => params[:from], :hidden => true %>
-  <%= f.text_field :user_id, :value => current_user.id, :hidden => true %>
+  <%= f.hidden_field :parent_story, :value => params[:from] %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
   <tr>
     <td>
-      <%= f.submit "Create" %>
+      <%= f.submit "Create", :class => "btn-inverse btn" %>
     </td>
   </tr>
 </table>

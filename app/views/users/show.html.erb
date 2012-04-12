@@ -1,36 +1,38 @@
-<% if @user[:show_name] == true %>
-  <div id="user_profile_name">
-    <%= @user.name %>
-  </div>
-<% end %>
-<div id="user_profile_username">
-<%= @user.username %>
-</div>
-<div id="user_profile_member_since">
-Member since: <%= @user.confirmed_at.strftime("%Y-%M-%d") %>
-</div>
-
-<div class="border1">
-  <div id="user_profile_score">
-    Score: <%= @user.score %>
-  </div>
-  <% if @user.show_email %>
-    <div id="user_profile_email">
-      <%= link_to @user.email, "mailto:" + @user.email %>
+<div class="span9">
+  <% if @user[:show_name] == true %>
+    <div id="user_profile_name">
+      <%= @user.name %>
     </div>
   <% end %>
-  <div id="user_profile_organization">
-  <%= @user.organization %>
+  <div id="user_profile_username">
+  <%= @user.username %>
   </div>
-  <div id="user_profile_about">
-    About:<br/>
-  <%= @user.about %>
+  <div id="user_profile_member_since">
+  Member since: <%= @user.confirmed_at.strftime("%Y-%M-%d") %>
   </div>
+  
+  <div class="border1">
+    <div id="user_profile_score">
+      Score: <%= @user.score %>
+    </div>
+    <% if @user.show_email %>
+      <div id="user_profile_email">
+        <%= link_to @user.email, "mailto:" + @user.email %>
+      </div>
+    <% end %>
+    <div id="user_profile_organization">
+    <%= @user.organization %>
+    </div>
+    <div id="user_profile_about">
+      About:<br/>
+    <%= @user.about %>
+    </div>
+  </div>
+  
+  Stories by this user:
+  <ul>
+  <% @user.stories.each { |story| %>
+  <li><%= link_to story.title, story_path(story) %> - <%= story.score %></li> 
+  <% } %>
+  </ul>
 </div>
-
-Stories by this user:
-<ul>
-<% @user.stories.each { |story| %>
-<li><%= link_to story.title, story_path(story) %> - <%= story.score %></li> 
-<% } %>
-</ul>
