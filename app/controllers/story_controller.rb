@@ -2,17 +2,17 @@ class StoryController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :new, :destroy, :upvote, :downvote]
   
   def index
-    @stories = Story.all
-    # @stories = Story.paginate(:page => params[:page], :per_page => 20)
+    # @stories = Story.all
+    @stories = Story.paginate(:page => params[:page], :per_page => 15)
   end
 
   def show
     @story = Story.find(params[:id])
-    @comment = Comment.new
+    @new_comment = Comment.new
+    @comments = Comment.find_all_by_comment_on_table_and_comment_on_id("stories", @story, :order => "created_at")
   end
 
   def create
-    # @story = Story.create(params[:story], :score => 0)
     @story = Story.create(:user_id => params[:story][:user_id],
                           :title => params[:story][:title],
                           :story => params[:story][:story],
@@ -27,7 +27,6 @@ class StoryController < ApplicationController
     else
       render :action => "new"
     end
-    
   end
 
   def new
@@ -42,6 +41,11 @@ class StoryController < ApplicationController
   end
 
   def downvote
+  end
+  
+  def comment
+    Comment.create(params[:comment])
+    redirect_to :back
   end
 
 end

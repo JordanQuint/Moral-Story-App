@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406151151) do
+ActiveRecord::Schema.define(:version => 20120413003201) do
 
   create_table "comments", :force => true do |t|
-    t.integer  "user_id",                   :null => false
-    t.integer  "story_id",                  :null => false
-    t.string   "content",    :limit => 600, :null => false
+    t.integer  "user_id",                         :null => false
+    t.string   "content",          :limit => 600, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_on_table", :limit => 50,  :null => false
+    t.integer  "comment_on_id",    :limit => 8,   :null => false
   end
 
   create_table "connections", :force => true do |t|

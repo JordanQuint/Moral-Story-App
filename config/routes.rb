@@ -7,17 +7,10 @@ MoralStory::Application.routes.draw do
   
   match "/search", :to => "Pages#search"
   
-  get "users/index"
   get "users/show"
-  get "users/create"
-  get "users/new"
-  get "users/destroy"
   
   get "comment/show"
-  get "comment/create"
-  get "comment/new"
-  get "comment/edit"
-  get "comment/destroy"
+  match "story/comment", :to => "Story#comment"
 
   get "story/index"
   match "/stories", :to => "Story#index"

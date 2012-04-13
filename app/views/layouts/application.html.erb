@@ -18,6 +18,8 @@
     <%= javascript_include_tag "bootstrap-transition" %>
     
     <%= csrf_meta_tags %>
+    
+    <%= yield :head %>
   </head>
   <body id="application_background">
     <div id="application_page" class="container span12">

@@ -36,6 +36,10 @@ div#application_header header{
   border-bottom: solid #666 2px;
 }
 
+
+/**************
+ * Header
+ **************/
 div#header_logo {
   float: left;
   width: auto;
@@ -45,14 +49,14 @@ div#header_logo {
 
 div#header_search_bar {
   margin-left: 100px;
-  margin-top: 0px;
+  margin-top: 5px;
   float: left;
   text-align: center;
   width: 400px;
 }
 
 div#header_search_bar form {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 div#header_search_bar form input{
@@ -61,6 +65,7 @@ div#header_search_bar form input{
 
 div#header_search_bar form select.searchbar_dropdown {
   width: auto;
+  margin-bottom: 0px;
 }
 
 div#header_profile_info {
@@ -73,22 +78,15 @@ div#header_profile_info .header_user_avatar {
   width: auto;
 }
 
-table#story_list tbody tr td, table#story_list thead th, table#story_list {
-  border: solid black 1px;
-}
-
-table#story_list tbody tr td, table#story_list thead th {
-   padding: 5px;
-}
-
 .border1 {
-  border: solid black 1px;
+  border: solid #888 1px;
   border-spacing: 0px;
   border-collapse: collapse;
 }
 
 #searchbar {
-  width: 200px; 
+  width: 200px;
+  
 }
 
 .search_results {
@@ -127,8 +125,41 @@ header nav ul li {
 }
 
 /**************
+ * Pagination
+ **************/
+.pagination a,
+.pagination em,
+.pagination span {
+  float: left;
+  padding: 0 13px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+a.next_page {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+a.previous_page,
+span.previous_page {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+}
+
+/**************
  * Story pages
  **************/
+/*Story show*/
 div#story_show_related {
   border-left: solid #666 2px;
   padding-left: 10px;
@@ -139,8 +170,75 @@ div#story_show_information {
   float: left;
 }
 
+div#story_show_content,
+div#story_show_comments {
+  overflow: auto;
+  height: auto;
+  max-height: 400px;
+  margin-bottom: 10px;
+  padding: 10px 0px 10px 10px;
+}
+
+div#story_show_comments form {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.story_show_comment_text_area {
+  height: 80px;
+  width: 400px;
+  border: solid #666 1px;
+  margin-bottom: 5px;
+}
+
+div#story_show_information form {
+  margin-bottom: 10px;
+}
+
+.comment {
+  width: 535px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.reply {
+  width: 465px;
+  margin-left: 60px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+div#story_show_information div.reply_link {
+  border-top: solid #AAA 1px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/*Story index*/
+table#story_list tbody tr td, table#story_list thead th, table#story_list {
+  border: solid black 1px;
+}
+
+table#story_list tbody tr td, table#story_list thead th {
+   padding: 5px;
+}
+
 /*Story new*/
 .story_text_area {
   width: 500px;
   height: 250px;
+}
+
+/**************
+ * User pages
+ **************/
+/*Sign up*/
+.signup_about_text_area {
+  width: 350px;
+  height: 120px;
+}
+
+.left {
+  float: left;
+  margin-right: 5px !important;
 }
