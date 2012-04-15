@@ -44,7 +44,7 @@ class StoryController < ApplicationController
       Like.delete(like)
     else
       Like.create(:user_id => @user.id,
-                :story_id => story.id)
+                  :story_id => story.id)
     end
     redirect_to :back
   end
