@@ -175,13 +175,14 @@ div#story_show_comments {
   overflow: auto;
   height: auto;
   max-height: 400px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 10px 0px 10px 10px;
 }
 
 div#story_show_comments form {
   margin-left: 5px;
   margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .story_show_comment_text_area {
@@ -212,6 +213,20 @@ div#story_show_information div.reply_link {
   border-top: solid #AAA 1px;
   font-size: 12px;
   margin-top: 10px;
+}
+
+#story_show_like_button {
+  margin-bottom: 10px;
+}
+
+.large_gray_text
+{
+  font-size: 16px;
+  color: #AAA;
+  font-weight: bold;
+  padding-right: 5px;
+  line-height: 25px;
+  margin-bottom: 5px;
 }
 
 /*Story index*/

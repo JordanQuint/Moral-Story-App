@@ -1,6 +1,7 @@
 <%= content_for :head do %>
   <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function()
+    {
       replyToComment = function(comment_id, story_id, reply_id)
       {
         if ($('#submit_comment_button').attr("value") == "Comment")
@@ -41,48 +42,78 @@
 <% end %>
 
 <div id="story_show_information" class="span6" style="width: span2">
-  <div id="story_show_title"><%= @story.title %></div>
-  <div id="story_show_author">
-    Author: 
-    <% if @story.author.show_name %>
-      <%= link_to @story.author.name, user_path(@story.author) %>
-    <% else %>
-      <%= link_to @story.author.username, user_path(@story.author) %>
-    <% end %>
-  </div>
-  <div id="story_show_details" class="span6">
-    <% if !@story.age.nil? %>
-      <div id="story_show_age">
-        Age: <%= @story.age %>
-      </div>
-    <% end %>
-    <% if !@story.topic.nil? %>
-      <div id="story_show_topic">
-        Topic: <%= @story.topic %>
-      </div>
-    <% end %>
-    <% if !@story.educational_technique.nil? %>
-      <div id="story_show_technique">
-        Educational technique: <%= @story.educational_technique %>
-      </div>
-    <% end %>
+  <br/>
+  <div>
+    <div id="story_show_title">
+      <h3><%= @story.title %></h3>
+    </div>
+    <div id="story_show_author">
+      Author: 
+      <% if @story.author.show_name %>
+        <%= link_to @story.author.name, user_path(@story.author) %>
+      <% else %>
+        <%= link_to @story.author.username, user_path(@story.author) %>
+      <% end %>
+    </div>
+    <div id="story_show_details" class="span6">
+      <% if !@story.age.nil? %>
+        <div id="story_show_age">
+          Age: <%= @story.age %>
+        </div>
+      <% end %>
+      <% if !@story.topic.nil? %>
+        <div id="story_show_topic">
+          Topic: <%= @story.topic %>
+        </div>
+      <% end %>
+      <% if !@story.educational_technique.nil? %>
+        <div id="story_show_technique">
+          Educational technique: <%= @story.educational_technique %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div id="story_show_content" class="span6 border1">
     <%= @story.story %>
   </div>
-  <% if user_signed_in? %>
-    <%= form_for @new_comment, :url => "/story/comment" do |f| %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.hidden_field :comment_on_table, :value => "stories", :class => "hidden_table_field" %>
-      <%= f.hidden_field :comment_on_id, :value => @story.id.to_s, :class => "hidden_id_field" %>
-      <%= f.text_area :content, :class => "story_show_comment_text_area" %>
-      <br/>
-      <%= f.submit "Comment", :id => "submit_comment_button", :class => "btn btn-primary" %>
-      <a class="hide" id="alternate_cancel_reply_link" href="">Cancel Reply</a>
+  <div id="story_show_like_button">
+    <% if signed_in? %>
+      <% if @story.liked_by(@user) %>
+        <%= link_to "Like", story_like_path + "?story=" + @story.id.to_s, :class => "btn btn-success", :method => :POST %>
+      <% else %>
+        <%= link_to "Like", story_like_path + "?story=" + @story.id.to_s, :class => "btn", :method => :POST %>
+      <% end %>
+    <% else %>
+      <p class="btn" disabled="true">Like</p>
     <% end %>
-  <% end %>
+    <div class="right">
+      <% if @story.liked_by(@user) %>
+        <% if @story.likes > 1 %>
+          You, and <%= (@story.likes - 1).to_s %> other people like this story.
+        <% else %>
+          You like this story.
+        <% end %>
+      <% else %>
+        <%= @story.likes %> people like this story.
+      <% end %>
+    </div>
+  </div>
+  
+  <div>
+    <% if user_signed_in? %>
+      <%= form_for @new_comment, :url => "/story/comment" do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :comment_on_table, :value => "stories", :class => "hidden_table_field" %>
+        <%= f.hidden_field :comment_on_id, :value => @story.id.to_s, :class => "hidden_id_field" %>
+        <%= f.text_area :content, :class => "story_show_comment_text_area" %>
+        <br/>
+        <%= f.submit "Comment", :id => "submit_comment_button", :class => "btn btn-primary" %>
+        <a class="hide" id="alternate_cancel_reply_link" href="">Cancel Reply</a>
+      <% end %>
+    <% end %>
+  </div>
   <div id="story_show_comments" class="span6 border1">
-    <% unless @comments.nil? %>
+    <% if !@comments.nil? && @comments.size > 0 %>
       <% @comments.each { |comment| %>
         <div class="comment border1">
           <div>
@@ -121,12 +152,16 @@
           <% end %>
         </div>
       <% } %>
+    <% else %>
+      <p class="large_gray_text">
+        There are no comments on this story yet.<br/>Submit your own comment above!
+      </p>
     <% end %>
   </div>
 </div>
   
 <div id="story_show_related" class="span3">
-  <%= link_to "Submit a related story", new_story_path + "?from=" + @story.id.to_s %>
+  <%= link_to "Submit a related story", new_story_path + "?from=" + @story.id.to_s, :class => "btn btn-success" %>
   <table id="stories_related_by_age" class="border1">
     <thead>
       <th class="border1">

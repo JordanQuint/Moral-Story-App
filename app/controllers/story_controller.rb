@@ -37,14 +37,22 @@ class StoryController < ApplicationController
   def destroy
   end
 
-  def upvote
-  end
-
-  def downvote
+  def like
+    story = Story.find(params[:story])
+    if story.liked_by(@user)
+      like = Like.find_by_story_id_and_user_id(story.id, @user.id)
+      Like.delete(like)
+    else
+      Like.create(:user_id => @user.id,
+                :story_id => story.id)
+    end
+    redirect_to :back
   end
   
   def comment
-    Comment.create(params[:comment])
+    if params[:comment].length > 10
+      Comment.create(params[:comment])
+    end
     redirect_to :back
   end
 

@@ -27,4 +27,12 @@ class Story < ActiveRecord::Base
   def related_by_author
     Story.find_all_by_user_id(self.user_id, :order => "score DESC", :limit => 5)
   end
+  
+  def liked_by(user)
+    !Like.find_by_story_id_and_user_id(self.id, user.id).nil?
+  end
+  
+  def likes
+    Like.first(:select => "count(*) AS size", :conditions => "story_id = '#{self.id}'").size
+  end
 end

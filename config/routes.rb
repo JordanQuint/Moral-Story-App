@@ -11,6 +11,7 @@ MoralStory::Application.routes.draw do
   
   get "comment/show"
   match "story/comment", :to => "Story#comment"
+  match "story/like", :to => "Story#like"
 
   get "story/index"
   match "/stories", :to => "Story#index"
