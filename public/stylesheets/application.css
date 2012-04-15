@@ -1,0 +1,259 @@
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+body#application_background {
+  width: 980px;
+  margin: auto;
+  padding: 5px;
+  background-color: gray;
+}
+
+div#application_page {
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+  height: auto;
+  width: auto;
+}
+
+div#application_content, div#application_header {
+  background-color: white;
+  position: relative;
+}
+
+div#application_header {
+  height: 70px;
+}
+
+.span1, .span2, .span3, .span4, .span5, .span6,
+.span7, .span8, .span9, .span10, .span11, .span12 {
+  margin-left: 0px;
+}
+
+div#application_header header{
+  height: 63px;
+  border-bottom: solid #666 2px;
+}
+
+
+/**************
+ * Header
+ **************/
+div#header_logo {
+  float: left;
+  width: auto;
+  height: auto;
+  margin-top: -5px;
+}
+
+div#header_search_bar {
+  margin-left: 100px;
+  margin-top: 5px;
+  float: left;
+  text-align: center;
+  width: 400px;
+}
+
+div#header_search_bar form {
+  margin-bottom: 10px;
+}
+
+div#header_search_bar form input{
+  margin-bottom: 0px;
+}
+
+div#header_search_bar form select.searchbar_dropdown {
+  width: auto;
+  margin-bottom: 0px;
+}
+
+div#header_profile_info {
+  float: right;
+  text-align: right;
+}
+
+div#header_profile_info .header_user_avatar {
+  height: 60px;
+  width: auto;
+}
+
+.border1 {
+  border: solid #888 1px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+#searchbar {
+  width: 200px;
+  
+}
+
+.search_results {
+  padding: 2px 3px 2px 3px;
+}
+
+.center {
+  text-align: center;
+}
+
+#header_nav_bar {
+  position: relative;
+  padding-left: 60px;
+}
+
+header {
+  padding-top: 5px;
+}
+
+header nav {
+  padding-bottom: 5px;
+  float: left;
+}
+
+header nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+header nav ul li {
+  display: inline;
+  padding: 0;
+  margin: 5px;
+}
+
+/**************
+ * Pagination
+ **************/
+.pagination a,
+.pagination em,
+.pagination span {
+  float: left;
+  padding: 0 13px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+a.next_page {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+
+a.previous_page,
+span.previous_page {
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+}
+
+/**************
+ * Story pages
+ **************/
+/*Story show*/
+div#story_show_related {
+  border-left: solid #666 2px;
+  padding-left: 10px;
+  float: right;
+}
+
+div#story_show_information {
+  float: left;
+}
+
+div#story_show_content,
+div#story_show_comments {
+  overflow: auto;
+  height: auto;
+  max-height: 400px;
+  margin-bottom: 5px;
+  padding: 10px 0px 10px 10px;
+}
+
+div#story_show_comments form {
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.story_show_comment_text_area {
+  height: 80px;
+  width: 400px;
+  border: solid #666 1px;
+  margin-bottom: 5px;
+}
+
+div#story_show_information form {
+  margin-bottom: 10px;
+}
+
+.comment {
+  width: 535px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.reply {
+  width: 465px;
+  margin-left: 60px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+div#story_show_information div.reply_link {
+  border-top: solid #AAA 1px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+#story_show_like_button {
+  margin-bottom: 10px;
+}
+
+.large_gray_text
+{
+  font-size: 16px;
+  color: #AAA;
+  font-weight: bold;
+  padding-right: 5px;
+  line-height: 25px;
+  margin-bottom: 5px;
+}
+
+/*Story index*/
+table#story_list tbody tr td, table#story_list thead th, table#story_list {
+  border: solid black 1px;
+}
+
+table#story_list tbody tr td, table#story_list thead th {
+   padding: 5px;
+}
+
+/*Story new*/
+.story_text_area {
+  width: 500px;
+  height: 250px;
+}
+
+/**************
+ * User pages
+ **************/
+/*Sign up*/
+.signup_about_text_area {
+  width: 350px;
+  height: 120px;
+}
+
+.left {
+  float: left;
+  margin-right: 5px !important;
+}
