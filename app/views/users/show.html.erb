@@ -1,37 +1,58 @@
 <div class="span9">
-  <% if @user[:show_name] == true %>
+  <% if @user_viewing[:show_name] == true %>
     <div id="user_profile_name">
-      <%= @user.name %>
+      <h3><%= @user_viewing.name %></h3>
     </div>
   <% end %>
   <div id="user_profile_username">
-  <%= @user.username %>
+  <h3><%= @user_viewing.username %></h3>
   </div>
+  <% unless @user == @user_viewing %>
+  <div>
+    <% if @user.is_following(@user_viewing) %>
+      <%= link_to "Unfollow", "/users/follow?user=" + @user_viewing.id.to_s, :class => "btn-mini btn btn-danger", :method => :POST %>
+    <% else %>
+      <%= link_to "Follow", "/users/follow?user=" + @user_viewing.id.to_s, :class => "btn-mini btn btn-success", :method => :POST %>
+    <% end %>
+  </div>
+  <% end %>
   <div id="user_profile_member_since">
-  Member since: <%= @user.confirmed_at.strftime("%Y-%M-%d") %>
+  Member since: <%= @user_viewing.confirmed_at.strftime("%Y-%M-%d") %>
   </div>
   
   <div class="border1">
     <div id="user_profile_score">
-      Score: <%= @user.score %>
+      <% if @user == @user_viewing %>
+        <% if @user_viewing.score == 1 %>
+          There has been 1 like on your stories.
+        <% else %>
+          There have been <%= @user_viewing.score %> likes on your stories.
+        <% end %>
+      <% else %>
+        <% if @user_viewing.score == 1 %>
+          There has been 1 like on this user's stories.
+        <% else %>
+          There have been <%= @user_viewing.score %> likes on this user's stories.
+        <% end %>
+      <% end %>
     </div>
-    <% if @user.show_email %>
+    <% if @user_viewing.show_email %>
       <div id="user_profile_email">
-        <%= link_to @user.email, "mailto:" + @user.email %>
+        <%= link_to @user_viewing.email, "mailto:" + @user_viewing.email %>
       </div>
     <% end %>
     <div id="user_profile_organization">
-    <%= @user.organization %>
+    <%= @user_viewing.organization %>
     </div>
     <div id="user_profile_about">
       About:<br/>
-    <%= @user.about %>
+    <%= @user_viewing.about %>
     </div>
   </div>
   
   Stories by this user:
   <ul>
-  <% @user.stories.each { |story| %>
+  <% @user_viewing.stories.each { |story| %>
   <li><%= link_to story.title, story_path(story) %> - <%= story.score %></li> 
   <% } %>
   </ul>

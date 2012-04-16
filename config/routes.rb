@@ -1,6 +1,10 @@
 MoralStory::Application.routes.draw do
   devise_for :users
 
+  match "story/follow", :to => "Story#follow"
+  match "story/like", :to => "Story#like"
+  match "users/follow", :to => "Users#follow"
+
   resources :pages
   resources :users
   resources :story
@@ -11,7 +15,6 @@ MoralStory::Application.routes.draw do
   
   get "comment/show"
   match "story/comment", :to => "Story#comment"
-  match "story/like", :to => "Story#like"
 
   get "story/index"
   match "/stories", :to => "Story#index"

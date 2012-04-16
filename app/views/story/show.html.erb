@@ -47,6 +47,13 @@
     <div id="story_show_title">
       <h3><%= @story.title %></h3>
     </div>
+    <div>
+      <% if @user.is_following(@story) %>
+        <%= link_to "Unfollow", "/story/follow?story=" + @story.id.to_s, :class => "btn-mini btn btn-danger", :method => :POST %>
+      <% else %>
+        <%= link_to "Follow", "/story/follow?story=" + @story.id.to_s, :class => "btn-mini btn btn-success", :method => :POST%>
+      <% end %>
+    </div>
     <div id="story_show_author">
       Author: 
       <% if @story.author.show_name %>

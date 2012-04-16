@@ -22,6 +22,9 @@ class StoryController < ApplicationController
                           :parent_story => params[:story][:parent_id],
                           :moral => params[:story][:moral],
                           :score => 0)
+    Subscription.create(:user_id => params[:story][:user_id],
+                        :subscribed_to => "stories",
+                        :target_id => @story.id)
     if @story.save
       redirect_to(story_path(@story), :notice => 'Your story was successfully created.')
     else
@@ -50,8 +53,40 @@ class StoryController < ApplicationController
   end
   
   def comment
-    if params[:comment].length > 10
-      Comment.create(params[:comment])
+    if params[:comment][:content].length > 10
+      #create the comment
+      comment = Comment.create(params[:comment])
+      
+      #if the comment was a reply to another comment
+      if params[:comment][:comment_on_table] == "comments"
+        
+        #subscribe the user to the original comment, unless they are already following it
+        comment_replied_to = Comment.find(params[:comment][:comment_on_id])
+        unless @user.is_following(comment_replied_to)
+          Subscription.create(:user_id => params[:comment][:user_id],
+                            :subscribed_to => "comments",
+                            :target_id => comment.id)
+        end
+      else
+        Subscription.create(:user_id => params[:comment][:user_id],
+                            :subscribed_to => "comments",
+                            :target_id => comment.id)
+      end
+    end
+    redirect_to :back
+  end
+  
+  def follow
+    story = Story.find(params[:story])
+    if @user.is_following(story)
+      subscription = Subscription.find_by_user_id_and_subscribed_to_and_target_id(@user.id, "stories", story.id)
+      Subscription.delete(subscription)
+      flash.now[:notice] = "You are no longer following this story."
+    else
+      Subscription.create(:user_id => @user.id,
+                          :subscribed_to => "stories",
+                          :target_id => story.id)
+      flash.now[:notice] = "You are now following this story."
     end
     redirect_to :back
   end
