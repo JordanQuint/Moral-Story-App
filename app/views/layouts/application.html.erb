@@ -8,8 +8,11 @@
     <%= stylesheet_link_tag :application %>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <%= javascript_include_tag "rails" %>
-    <%= javascript_include_tag "javascripts/rails" %>
+    <% if ENV["RAILS_ENV"] == "development" %>
+      <%= javascript_include_tag "rails" %>
+    <% else %>
+      <%= javascript_include_tag "javascripts/rails" %>
+    <% end %
     <%#= javascript_include_tag "javascripts/bootstrap-carousel" %>
     <%#= javascript_include_tag "javascripts/bootstrap-collapse" %>
     <%#= javascript_include_tag "javascripts/bootstrap-modal" %>
