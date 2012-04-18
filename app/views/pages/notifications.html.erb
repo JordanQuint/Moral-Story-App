@@ -1,0 +1,41 @@
+<div class="span9">
+  <div class="span6 border1">
+    <table id="notifications_table">
+      <% @notifications.each { |notification| %>
+        <% related_user = notification.from_user %>
+        <tr>
+          <td class="border1 notification_description">
+            <% if notification.from == "user story" %>
+              <% if related_user.show_name %>
+                <%= link_to related_user.name, user_path(related_user) %>
+              <% else %>
+                <%= link_to related_user.username, user_path(related_user) %>
+              <% end %> has created a new story!
+            <% elsif notification.from == "related story" %>
+              <% if related_user.show_name %>
+                <%= link_to related_user.name, user_path(related_user) %>
+              <% else %>
+                <%= link_to related_user.username, user_path(related_user) %>
+              <% end %> has submitted a story related to a story you follow!
+            <% elsif notification.from == "comment reply" %>
+              <% if related_user.show_name %>
+                <%= link_to related_user.name, user_path(related_user) %>
+              <% else %>
+                <%= link_to related_user.username, user_path(related_user) %>
+              <% end %> has replied to one of your comments!
+            <% elsif notification.from == "new comment" %>
+              <% if related_user.show_name %>
+                <%= link_to related_user.name, user_path(related_user) %>
+              <% else %>
+                <%= link_to related_user.username, user_path(related_user) %>
+              <% end %> has commented on a story you follow!
+            <% end %>
+          </td>
+          <td class="border1 notification_link">
+            <%= link_to "Check it out!", notification.link %>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+  <div>
+</div>

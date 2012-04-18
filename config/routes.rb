@@ -24,6 +24,7 @@ MoralStory::Application.routes.draw do
   get "story/destroy"
   get "story/upvote"
   get "story/downvote"
+  match "/notifications", :to => "Pages#notifications"
   
   # Sets the host for Devise
   default_url_options :host => "localhost:3000"

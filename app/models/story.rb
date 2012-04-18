@@ -35,4 +35,9 @@ class Story < ActiveRecord::Base
   def likes
     Like.first(:select => "count(*) AS size", :conditions => "story_id = '#{self.id}'").size
   end
+  
+  def followers
+    User.all(:joins => "JOIN subscriptions ON user_id = users.id",
+              :conditions => ["subscribed_to = 'stories' AND target_id = ?", self.id])
+  end
 end

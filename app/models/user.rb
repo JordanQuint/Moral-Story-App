@@ -31,4 +31,17 @@ class User < ActiveRecord::Base
       !Subscription.first(:conditions => ["user_id = ? AND subscribed_to = 'comments' AND target_id = ?", self.id, object.id]).nil?
     end
   end
+  
+  def followers
+    User.all(:joins => "JOIN subscriptions ON user_id = users.id",
+              :conditions => ["subscribed_to = 'users' AND target_id = ?", self.id])
+  end
+  
+  def new_notifications
+    Notification.all(:conditions => ["user_id = ? AND viewed = 0", self.id])
+  end
+  
+  def notifications
+    Notification.all(:conditions => ["user_id = ?", self.id], :order => "viewed ASC, created_at DESC")
+  end
 end

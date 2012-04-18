@@ -98,8 +98,9 @@ div#header_profile_info .header_user_avatar {
 }
 
 #header_nav_bar {
+  width: 500px;
   position: relative;
-  padding-left: 60px;
+  text-align: center;
 }
 
 header {
@@ -122,6 +123,10 @@ header nav ul li {
   display: inline;
   padding: 0;
   margin: 5px;
+}
+
+.notification_text {
+  color: red;
 }
 
 /**************
@@ -174,9 +179,19 @@ div#story_show_content,
 div#story_show_comments {
   overflow: auto;
   height: auto;
-  max-height: 400px;
+  max-height: 600px;
   margin-bottom: 5px;
   padding: 10px 0px 10px 10px;
+}
+
+div#story_show_important_comment {
+  overflow: auto;
+  height: auto;
+  max-height: 300px;
+  margin-bottom: 5px;
+  padding: 10px 0px 10px 10px;
+  border-color: #FF4D4D;
+  border-width: 2px;
 }
 
 div#story_show_comments form {
@@ -256,4 +271,16 @@ table#story_list tbody tr td, table#story_list thead th {
 .left {
   float: left;
   margin-right: 5px !important;
+}
+
+/**************
+ * Notification page
+ **************/
+#notifications_table {
+  margin: 10px;
+}
+
+td.notification_description,
+td.notification_link {
+  padding: 10px;
 }

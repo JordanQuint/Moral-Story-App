@@ -119,45 +119,87 @@
       <% end %>
     <% end %>
   </div>
+  <% unless @important_comment.nil? %>
+    <div id="story_show_important_comment" class="span6 border1">
+      <div class="comment border1">
+        <div>
+        <% user = @important_comment.user %>
+        <% if user.show_name %>
+          <%= user.name %>:
+        <% else %>
+          <%= user.username %>:
+        <% end %>
+        </div>
+        <div>
+        <%= @important_comment.content %>
+        </div>
+        <div class="reply_link">
+          <%= link_to "Reply", "javascript:replyToComment(#{@important_comment.id},#{@story.id},-1);", :class => "reply_to_" + @important_comment.id.to_s %>
+        </div>
+        <% unless @important_comment.replies.nil? %>
+          <% @important_comment.replies.each { |reply| %>
+            <div class="reply border1">
+              <% user = reply.user %>
+              <div>
+                <% if user.show_name %>
+                  <%= user.name %>:
+                <% else %>
+                  <%= user.username %>:
+                <% end %>
+              </div>
+              <div>
+                <%= reply.content %>
+              </div>
+              <div class="reply_link">
+                <%= link_to "Reply", "javascript:replyToComment(#{@important_comment.id},#{@story.id},#{reply.id});", :class => "reply_to_" + reply.id.to_s %>
+              </div>
+            </div>
+          <% } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <div id="story_show_comments" class="span6 border1">
     <% if !@comments.nil? && @comments.size > 0 %>
       <% @comments.each { |comment| %>
-        <div class="comment border1">
-          <div>
-          <% user = comment.user %>
-          <% if user.show_name %>
-            <%= user.name %>:
-          <% else %>
-            <%= user.username %>:
-          <% end %>
-          </div>
-          <div>
-          <%= comment.content %>
-          </div>
-          <div class="reply_link">
-            <%= link_to "Reply", "javascript:replyToComment(#{comment.id},#{@story.id},-1);", :class => "reply_to_" + comment.id.to_s %>
-          </div>
-          <% unless comment.replies.nil? %>
-            <% comment.replies.each { |reply| %>
-              <div class="reply border1">
-                <% user = reply.user %>
-                <div>
-                  <% if user.show_name %>
-                    <%= user.name %>:
-                  <% else %>
-                    <%= user.username %>:
-                  <% end %>
+        <% if @important_comment.nil? || comment.id != @important_comment.id %>
+          <div class="comment border1">
+            <div>
+            <% user = comment.user %>
+            <% if user.show_name %>
+              <%= user.name %>:
+            <% else %>
+              <%= user.username %>:
+            <% end %>
+            </div>
+            <div>
+            <%= comment.content %>
+            </div>
+            <div class="reply_link">
+              <%= link_to "Reply", "javascript:replyToComment(#{comment.id},#{@story.id},-1);", :class => "reply_to_" + comment.id.to_s %>
+            </div>
+            <% unless comment.replies.nil? %>
+              <% comment.replies.each { |reply| %>
+                <div class="reply border1">
+                  <% user = reply.user %>
+                  <div>
+                    <% if user.show_name %>
+                      <%= user.name %>:
+                    <% else %>
+                      <%= user.username %>:
+                    <% end %>
+                  </div>
+                  <div>
+                    <%= reply.content %>
+                  </div>
+                  <div class="reply_link">
+                    <%= link_to "Reply", "javascript:replyToComment(#{comment.id},#{@story.id},#{reply.id});", :class => "reply_to_" + reply.id.to_s %>
+                  </div>
                 </div>
-                <div>
-                  <%= reply.content %>
-                </div>
-                <div class="reply_link">
-                  <%= link_to "Reply", "javascript:replyToComment(#{comment.id},#{@story.id},#{reply.id});", :class => "reply_to_" + reply.id.to_s %>
-                </div>
-              </div>
-            <% } %>
-          <% end %>
-        </div>
+              <% } %>
+            <% end %>
+          </div>
+        <% end %>
       <% } %>
     <% else %>
       <p class="large_gray_text">

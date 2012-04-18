@@ -20,9 +20,17 @@
       <ul class="small_text">
         <li><%= link_to "Home", root_path %></li>
         <li>|</li>
-          <%= link_to "Stories", stories_path %>
-        <li><%= signed_in? ? '|' : '' %></li>
-        <li><%= signed_in? ? (link_to "Submit your own story!", new_story_path) : '' %></li>
+        <%= link_to "Stories", stories_path %>
+        <% if signed_in? %>
+          <li>|</li>
+          <% if (@user.new_notifications.count) > 0 %>
+            <li><%= link_to @user.new_notifications.count.to_s + " new notifications", "/notifications", :class => "notification_text" %></li>
+          <% else %>
+            <li><%= link_to "0 new notifications", "/notifications" %></li>
+          <% end %>
+          <li>|</li>
+          <li><%= link_to "Submit your own story!", new_story_path %></li>
+        <% end %>
       </ul>
       </nav>
     </div>

@@ -23,4 +23,8 @@ class PagesController < ApplicationController
       @results = Story.find(:all, :conditions => ["educational_technique LIKE ?", "%" + params[:query] + "%" ])
     end
   end
+  
+  def notifications
+    @notifications = @user.notifications
+  end
 end
