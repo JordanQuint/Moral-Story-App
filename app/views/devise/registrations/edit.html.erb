@@ -9,7 +9,7 @@
   </div>
 
   <div>
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
     <%= f.password_field :password %>
   </div>
 
@@ -19,7 +19,7 @@
     </div>
 
   <div>
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.label :current_password, :class => "bold" %> <i>(we need your current password to confirm your changes)</i><br/>
     <%= f.password_field :current_password %>
   </div>
   

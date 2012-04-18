@@ -273,6 +273,10 @@ table#story_list tbody tr td, table#story_list thead th {
   margin-right: 5px !important;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /**************
  * Notification page
  **************/

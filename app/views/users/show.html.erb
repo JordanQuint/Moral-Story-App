@@ -1,4 +1,7 @@
 <div class="span9">
+  <% if signed_in? && @user.id == current_user.id %>
+    <%= link_to "Edit your profile", edit_user_registration_path(@user) %>
+  <% end %>
   <% if @user_viewing[:show_name] == true %>
     <div id="user_profile_name">
       <h3><%= @user_viewing.name %></h3>
@@ -8,16 +11,18 @@
   <h3><%= @user_viewing.username %></h3>
   </div>
   <% unless @user == @user_viewing %>
-  <div>
-    <% if @user.is_following(@user_viewing) %>
-      <%= link_to "Unfollow", "/users/follow?user=" + @user_viewing.id.to_s, :class => "btn-mini btn btn-danger", :method => :POST %>
-    <% else %>
-      <%= link_to "Follow", "/users/follow?user=" + @user_viewing.id.to_s, :class => "btn-mini btn btn-success", :method => :POST %>
-    <% end %>
-  </div>
+  <% if signed_in? %>
+    <div>
+      <% if @user.is_following(@user_viewing) %>
+        <%= link_to "Unfollow", "/users/follow?user=" + @user_viewing.id.to_s, :class => "btn-mini btn btn-danger", :method => :POST %>
+      <% else %>
+        <%= link_to "Follow", "/users/follow?user=" + @user_viewing.id.to_s, :class => "btn-mini btn btn-success", :method => :POST %>
+      <% end %>
+    </div>
+  <% end %>
   <% end %>
   <div id="user_profile_member_since">
-  Member since: <%= @user_viewing.confirmed_at.strftime("%Y-%M-%d") %>
+  Member since: <%= @user_viewing.confirmed_at.strftime("%B %d, %Y") %>
   </div>
   
   <div class="border1">

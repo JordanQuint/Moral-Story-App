@@ -23,12 +23,14 @@ class StoryController < ApplicationController
       note.save
     end
     
-    #remove any notifications the user had for this story
-    notes = Notification.all(:conditions => ["user_id = ? AND target_id = ? AND `from` LIKE '%story%'", @user.id, @story.id])
-    notes.each { |note|
-      note.viewed = true
-      note.save
-    }
+    if signed_in?
+      #remove any notifications the user had for this story
+      notes = Notification.all(:conditions => ["user_id = ? AND target_id = ? AND `from` LIKE '%story%'", @user.id, @story.id])
+      notes.each { |note|
+        note.viewed = true
+        note.save
+      }
+    end
   end
 
   def create
