@@ -4,6 +4,10 @@ MoralStory::Application.routes.draw do
   match "story/follow", :to => "Story#follow"
   match "story/like", :to => "Story#like"
   match "users/follow", :to => "Users#follow"
+  
+  devise_scope :user do
+    match "users/sign_out", :to => "Devise/sessions#destroy"
+  end
 
   resources :pages
   resources :users
