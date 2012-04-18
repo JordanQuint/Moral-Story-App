@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
   
   def new_notifications
-    Notification.all(:conditions => ["user_id = ? AND viewed = 0", self.id])
+    Notification.all(:conditions => ["user_id = ? AND viewed = false", self.id])
   end
   
   def notifications
