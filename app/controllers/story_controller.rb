@@ -25,7 +25,7 @@ class StoryController < ApplicationController
     
     if signed_in?
       #remove any notifications the user had for this story
-      notes = Notification.all(:conditions => ["user_id = ? AND target_id = ? AND `from` LIKE '%story%'", @user.id, @story.id])
+      notes = Notification.all(:conditions => ["user_id = ? AND target_id = ? AND caused_by LIKE '%story%'", @user.id, @story.id])
       notes.each { |note|
         note.viewed = true
         note.save
