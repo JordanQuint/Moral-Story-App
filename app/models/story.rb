@@ -33,7 +33,7 @@ class Story < ActiveRecord::Base
   end
   
   def likes
-    Like.first(:select => "count(*) AS size", :conditions => "story_id = '#{self.id}'").size
+    Like.first(:select => "count(*) AS size", :conditions => "story_id = '#{self.id}'").size.to_i
   end
   
   def followers
