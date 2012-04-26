@@ -83,7 +83,7 @@
     </div>
   </div>
   <div id="story_show_content" class="span6 border1">
-    <%= @story.story %>
+    <%= sanitize @story.story.gsub("\n", "<br/>"), :tags => %w(i b u br ol ul li) %>
   </div>
   <div id="story_show_like_button">
     <% if signed_in? %>

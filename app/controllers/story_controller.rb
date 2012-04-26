@@ -36,7 +36,7 @@ class StoryController < ApplicationController
   def create
     @story = Story.create(:user_id => params[:story][:user_id],
                           :title => params[:story][:title],
-                          :story => params[:story][:story],
+                          :story => params[:story][:story].html_safe,
                           :age => params[:story][:age],
                           :topic => params[:story][:topic],
                           :educational_technique => params[:story][:educational_technique],
