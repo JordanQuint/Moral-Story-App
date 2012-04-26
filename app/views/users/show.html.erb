@@ -21,9 +21,11 @@
     </div>
   <% end %>
   <% end %>
-  <div id="user_profile_member_since">
-  Member since: <%= @user_viewing.confirmed_at.strftime("%B %d, %Y") %>
-  </div>
+  <% unless @user_viewing.confirmed_at.nil? %>
+    <div id="user_profile_member_since">
+    Member since: <%= @user_viewing.confirmed_at.strftime("%B %d, %Y") %>
+    </div>
+  <% end %>
   
   <div class="border1">
     <div id="user_profile_score">
