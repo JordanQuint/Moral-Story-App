@@ -23,8 +23,10 @@
         <%= link_to "Stories", stories_path %>
         <% if signed_in? %>
           <li>|</li>
-          <% if (@user.new_notifications.count) > 0 %>
+          <% if (@user.new_notifications.count) > 1 %>
             <li><%= link_to @user.new_notifications.count.to_s + " new notifications", "/notifications", :class => "notification_text" %></li>
+          <% elsif (@user.new_notifications.count) == 1 %>
+            <li><%= link_to "1 new notification", "/notifications", :class => "notification_text" %></li>
           <% else %>
             <li><%= link_to "0 new notifications", "/notifications" %></li>
           <% end %>

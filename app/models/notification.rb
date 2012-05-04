@@ -10,13 +10,13 @@ class Notification < ActiveRecord::Base
   
   def from_user
     
-    if self.from == "user story"
+    if self.caused_by == "user story"
       User.find(Story.find(self.target_id).user_id)
-    elsif self.from == "related story"
+    elsif self.caused_by == "related story"
       User.find(Story.find(self.target_id).user_id)
-    elsif self.from == "comment reply"
+    elsif self.caused_by == "comment reply"
       User.find(Comment.find(self.target_id).user_id)
-    elsif self.from == "new comment"
+    elsif self.caused_by == "new comment"
       User.find(Comment.find(self.target_id).user_id)
     end
     
@@ -24,16 +24,16 @@ class Notification < ActiveRecord::Base
   
   def link
     response = ""
-    if self.from == "user story"
+    if self.caused_by == "user story"
       response = "/story/" + self.target_id.to_s
-    elsif self.from == "related story"
+    elsif self.caused_by == "related story"
       response = "/story/" + self.target_id.to_s
-    elsif self.from == "comment reply"
+    elsif self.caused_by == "comment reply"
       comment = Comment.find(self.target_id)
       original_comment = Comment.find(comment.comment_on_id)
       story = comment.story
       response = "/story/" + story.id.to_s + "?comment=" + original_comment.id.to_s + "&reply=true&reply_id=" + comment.id.to_s
-    elsif self.from == "new comment"
+    elsif self.caused_by == "new comment"
       comment = Comment.find(self.target_id)
       story = comment.story
       response = "/story/" + story.id.to_s + "?comment=" + comment.id.to_s + "&reply=false"

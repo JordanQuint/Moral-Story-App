@@ -15,12 +15,14 @@ class StoryController < ApplicationController
       #set the Notification as viewed
       note = nil
       if params[:reply]
-        note = Notification.find_by_user_id_and_target_id_and_from(@user.id, params[:reply_id], "comment reply")
+        note = Notification.find_by_user_id_and_target_id_and_caused_by(@user.id, params[:reply_id], "comment reply")
       else
-        note = Notification.find_by_user_id_and_target_id_and_from(@user.id, @important_comment.id, "new comment")
+        note = Notification.find_by_user_id_and_target_id_and_caused_by(@user.id, @important_comment.id, "new comment")
       end
-      note.viewed = true
-      note.save
+      unless note.nil?
+        note.viewed = true
+        note.save
+      end
     end
     
     if signed_in?
@@ -52,7 +54,7 @@ class StoryController < ApplicationController
     
     main_user.followers.each { |user|
       Notification.create(:user_id => user.id,
-                          :from => "user story",
+                          :caused_by => "user story",
                           :target_id => @story.id)
     }
     
@@ -63,7 +65,7 @@ class StoryController < ApplicationController
       original_story.followers.each { |user|
         unless original_story.user_id == user.id
           Notification.create(:user_id => user.id,
-                              :from => "related story",
+                              :caused_by => "related story",
                               :target_id => @story.id)
         end
       }
@@ -97,7 +99,7 @@ class StoryController < ApplicationController
   end
   
   def comment
-    if params[:comment][:content].length > 10
+    if params[:comment][:content].length > 1
       #create the comment
       comment = Comment.create(params[:comment])
       
@@ -115,7 +117,7 @@ class StoryController < ApplicationController
         comment_replied_to.followers.each{ |user|
           unless comment_replied_to.user_id = user.id
             Notification.create(:user_id => user.id,
-                                :from => "comment reply",
+                                :caused_by => "comment reply",
                                 :target_id => comment.id)
           end
         }
